@@ -21,8 +21,10 @@ public class TankDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.zero.set(RobotMap.joystick.getRawAxis(5));
-    	RobotMap.one.set(RobotMap.joystick.getRawAxis(1));
+    	double x = RobotMap.joystick.getRawAxis(1);
+    	double y = RobotMap.joystick.getRawAxis(5);
+		RobotMap.zero.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? x : 0);
+		RobotMap.one.set((Math.abs(y) > RobotMap.MOTOR_CUTOFF) ? y : 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -22,8 +22,9 @@ public class CrossfireCommand extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		RobotMap.zero.set(RobotMap.joystick.getRawAxis(1));
-		RobotMap.one.set(-RobotMap.joystick.getRawAxis(1));
+		double x = RobotMap.joystick.getRawAxis(1);
+		RobotMap.zero.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? x : 0);
+		RobotMap.one.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? -x : 0);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

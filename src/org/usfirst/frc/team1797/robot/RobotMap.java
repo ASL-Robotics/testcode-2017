@@ -24,6 +24,7 @@ public class RobotMap {
 	public static boolean hasInitialized;
 	public static SpeedController zero, one, two, three, four;
 	public static Joystick joystick;
+	public static final double MOTOR_CUTOFF = .1;
 	static {
 		hasInitialized = false;
 	}

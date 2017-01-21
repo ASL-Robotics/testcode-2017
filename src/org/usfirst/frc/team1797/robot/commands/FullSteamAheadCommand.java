@@ -21,11 +21,12 @@ public class FullSteamAheadCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.zero.set(RobotMap.joystick.getRawAxis(1));
-    	RobotMap.one.set(RobotMap.joystick.getRawAxis(1));
-    	RobotMap.two.set(RobotMap.joystick.getRawAxis(1));
-    	RobotMap.three.set(RobotMap.joystick.getRawAxis(1));
-    	RobotMap.four.set(RobotMap.joystick.getRawAxis(1));
+    	double x = RobotMap.joystick.getRawAxis(1);
+		RobotMap.zero.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? x : 0);
+		RobotMap.one.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? x : 0);
+		RobotMap.two.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? x : 0);
+		RobotMap.three.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? x : 0);
+		RobotMap.four.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? x : 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
