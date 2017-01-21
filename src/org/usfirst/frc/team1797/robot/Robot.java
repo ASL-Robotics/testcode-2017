@@ -6,6 +6,7 @@ import org.usfirst.frc.team1797.robot.commands.DualfireCommand;
 import org.usfirst.frc.team1797.robot.commands.FullSteamAheadCommand;
 import org.usfirst.frc.team1797.robot.commands.TankDriveCommand;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 	
 	Command command;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	CameraServer cameraServer;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -30,12 +32,20 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		// Setup the SendableChooser
 		chooser.addDefault("Crossfire", new CrossfireCommand());
 		chooser.addObject("Dualfire", new DualfireCommand());
 		chooser.addObject("Tank Drive", new TankDriveCommand());
 		chooser.addObject("Full Steam Ahead", new FullSteamAheadCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		
+		// Initialize the RobotMap
 		RobotMap.init();
+		
+		// Setup the two cameras
+		cameraServer = CameraServer.getInstance();
+		cameraServer.startAutomaticCapture("Front Camera", 0);
+		cameraServer.startAutomaticCapture("Back Camera", 1);
 	}
 
 	/**
