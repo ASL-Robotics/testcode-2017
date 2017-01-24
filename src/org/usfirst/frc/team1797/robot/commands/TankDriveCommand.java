@@ -23,8 +23,8 @@ public class TankDriveCommand extends Command {
     protected void execute() {
     	double x = RobotMap.joystick.getRawAxis(1);
     	double y = RobotMap.joystick.getRawAxis(5);
-		RobotMap.zero.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? x : 0);
-		RobotMap.one.set((Math.abs(y) > RobotMap.MOTOR_CUTOFF) ? y : 0);
+		RobotMap.zero.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? x : 0);
+		RobotMap.one.set((Math.abs(y) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? y : 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

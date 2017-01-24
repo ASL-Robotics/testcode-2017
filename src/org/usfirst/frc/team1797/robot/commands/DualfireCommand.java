@@ -23,8 +23,8 @@ public class DualfireCommand extends Command {
 	@Override
 	protected void execute() {
 		double x = RobotMap.joystick.getRawAxis(1);
-		RobotMap.zero.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? x : 0);
-		RobotMap.one.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF) ? x : 0);
+		RobotMap.zero.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? x : 0);
+		RobotMap.one.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? x : 0);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
