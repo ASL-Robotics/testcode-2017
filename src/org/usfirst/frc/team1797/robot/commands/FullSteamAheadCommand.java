@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1797.robot.commands;
 
 import org.usfirst.frc.team1797.robot.RobotMap;
+import org.usfirst.frc.team1797.robot.util.Util;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -22,11 +23,11 @@ public class FullSteamAheadCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double x = RobotMap.joystick.getRawAxis(1);
-		RobotMap.zero.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? x : 0);
-		RobotMap.one.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? x : 0);
-		RobotMap.two.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? x : 0);
-		RobotMap.three.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? x : 0);
-		RobotMap.four.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? x : 0);
+		RobotMap.zero.set(Util.getMotorOutput(x));
+		RobotMap.one.set(Util.getMotorOutput(x));
+		RobotMap.two.set(Util.getMotorOutput(x));
+		RobotMap.three.set(Util.getMotorOutput(x));
+		RobotMap.four.set(Util.getMotorOutput(x));
     }
 
     // Make this return true when this Command no longer needs to run execute()

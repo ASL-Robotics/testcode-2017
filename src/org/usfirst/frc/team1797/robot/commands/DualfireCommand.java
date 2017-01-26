@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team1797.robot.Robot;
 import org.usfirst.frc.team1797.robot.RobotMap;
+import org.usfirst.frc.team1797.robot.util.Util;
 
 /**
  *
@@ -23,8 +24,8 @@ public class DualfireCommand extends Command {
 	@Override
 	protected void execute() {
 		double x = RobotMap.joystick.getRawAxis(1);
-		RobotMap.zero.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? x : 0);
-		RobotMap.one.set((Math.abs(x) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? x : 0);
+		RobotMap.zero.set(Util.getMotorOutput(x));
+		RobotMap.one.set(Util.getMotorOutput(x));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
