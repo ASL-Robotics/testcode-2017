@@ -9,6 +9,6 @@ public class Util {
 	 * @return The output value, but only if above the cutoff and the A button on the xbox controller is pressed
 	 */
 	public static double getMotorOutput(double input) {
-		return (Math.abs(input) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(0)) ? input : 0;
+		return (Math.abs(input) > RobotMap.MOTOR_CUTOFF && RobotMap.joystick.getRawButton(1)) ? input : 0;
 	}
 }
